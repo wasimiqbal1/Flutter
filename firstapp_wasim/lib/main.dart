@@ -8,8 +8,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Row (children: [
+        body: Row (
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
           Text("1st Row"),
           SizedBox(width: 10, ),
           Text("2nd Row"),
