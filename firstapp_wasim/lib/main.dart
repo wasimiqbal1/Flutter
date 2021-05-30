@@ -10,17 +10,39 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Row (
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-          Text("1st Row"),
-          SizedBox(width: 10, ),
-          Text("2nd Row"),
-          SizedBox(width: 10, ),
-          Text("3rd Row"),
-          SizedBox(width: 10, ),
-        ],)
-      ),
+        body: SingleChildScrollView(
+                  child: Center(
+            child: Column (
+              children: [
+                Container(
+                  height: 100,
+                  width: 100,
+                  color: Colors.pink.shade50,),
+                  SizedBox(height: 30,),
+                  Container(
+                  height: 100,
+                  width: 100,
+                  color: Colors.pink.shade50,),
+                  SizedBox(height: 30,),
+                  Container(
+                  height: 100,
+                  width: 100,
+                  color: Colors.pink.shade50,),
+                  SizedBox(height: 30,),
+                  Container(
+                  height: 100,
+                  width: 100,
+                  color: Colors.pink.shade50,),
+                  SizedBox(height: 30,),
+                  Container(
+                  height: 100,
+                  width: 100,
+                  color: Colors.pink.shade50,),
+                  SizedBox(height: 30,),
+            ],),
+          ),
+        ),
+      )
     );
   }
 }
