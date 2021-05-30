@@ -10,38 +10,29 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: SingleChildScrollView(
-                  child: Center(
-            child: Column (
+        appBar: AppBar(
+          title: Center(child: Text("Login Page")),),
+          body: Center(
+            child: Column(
               children: [
+                SizedBox(height:50,),
                 Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.pink.shade50,),
-                  SizedBox(height: 30,),
-                  Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.pink.shade50,),
-                  SizedBox(height: 30,),
-                  Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.pink.shade50,),
-                  SizedBox(height: 30,),
-                  Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.pink.shade50,),
-                  SizedBox(height: 30,),
-                  Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.pink.shade50,),
-                  SizedBox(height: 30,),
-            ],),
+                  width: 200,
+                  child: TextField(
+                  ),
+                ),
+                SizedBox(height:30,),                
+                Container(
+                  width: 200,
+                  child: TextField(
+                  ),
+                ),
+                SizedBox(height:30,),
+                ElevatedButton(onPressed: (){}, child: Text("Login"))
+              ],
+            ),
           ),
-        ),
+
       )
     );
   }
