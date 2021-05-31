@@ -9,7 +9,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp (
       home: Scaffold(
-        body: Home(),),
+        body: Home() 
+        ),
      );
   }
 }
@@ -20,13 +21,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  @override 
-  Widget build(BuildContext context) {  
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        Container(height: 200, width: 200, color: Colors.red,),
-      ],),
-      
+      body: Column(
+          children: [
+            Container(width: 100, height: 100, color: Colors.teal,)
+          ],
+      ),
     );
   }
 }
