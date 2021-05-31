@@ -7,33 +7,26 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return MaterialApp (
       home: Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text("Login Page")),),
-          body: Center(
-            child: Column(
-              children: [
-                SizedBox(height:50,),
-                Container(
-                  width: 200,
-                  child: TextField(
-                  ),
-                ),
-                SizedBox(height:30,),                
-                Container(
-                  width: 200,
-                  child: TextField(
-                  ),
-                ),
-                SizedBox(height:30,),
-                ElevatedButton(onPressed: (){}, child: Text("Login"))
-              ],
-            ),
-          ),
+        body: Home(),),
+     );
+  }
+}
 
-      )
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override 
+  Widget build(BuildContext context) {  
+    return Scaffold(
+      body: Column(children: [
+        Container(height: 200, width: 200, color: Colors.red,),
+      ],),
+      
     );
   }
 }
