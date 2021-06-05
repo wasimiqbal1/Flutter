@@ -12,7 +12,18 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: Column(
         children: [
-          Container(width: 200, height: 150, color: Colors.blueGrey)
+          Container(
+            margin: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.only(left: 20, top: 20),
+            child: Text("Box Decoration"),
+            width: 200,
+            height: 200, 
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(20)
+
+            ),
+            )
           ],),
     );
   }
