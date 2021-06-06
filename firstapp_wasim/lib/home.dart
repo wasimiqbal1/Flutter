@@ -17,10 +17,10 @@ class _HomeState extends State<Home> {
               color: Colors.black,height:100, width:100 ),),
        
         Positioned(
-          left: 20,
-          top: 20,
+          left: 25,
+          top: 25,
               child: Container(
-                   color: Colors.grey,height:100, width:100,)),
+                   color: Colors.purple,height:100, width:100,)),
         
         
         Align(
