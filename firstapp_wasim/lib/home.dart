@@ -16,6 +16,13 @@ class _HomeState extends State<Home> {
                   child: Container(
               color: Colors.black,height:100, width:100 ),),
        
+        Positioned(
+          left: 20,
+          top: 20,
+              child: Container(
+                   color: Colors.grey,height:100, width:100,)),
+        
+        
         Align(
           alignment: Alignment.bottomRight,
                  child: Container(
