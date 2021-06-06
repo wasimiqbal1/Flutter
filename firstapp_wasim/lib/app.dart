@@ -10,7 +10,14 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Center(
       child: Scaffold(
-        body: Text("App Page", style: TextStyle(fontSize: 30),),
+        body: Column(
+          children: [
+            Text("App Page", style: TextStyle(fontSize: 30),),
+              ElevatedButton(onPressed: (){
+                Navigator.pop(context);
+            }, child: Text("Back"))
+          ],
+        ),
         
       ),
     );

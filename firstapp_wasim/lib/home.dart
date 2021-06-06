@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'app.dart';
 
 
@@ -12,13 +11,33 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(onPressed: (){
-          Navigator.push(context, 
-          MaterialPageRoute(builder: (context) => App()));
-        }, 
-        child: Text("Button"))
+      body: Column(
+        children: [
+          abc(),
+          abc(),
+          abc(),
+          abc(),
+          abc(),
+          abc(),
+        ]    
       )      
     );
   }
+}
+
+Widget abc() {
+  return ListTile(
+    leading: CircleAvatar(
+     backgroundImage: AssetImage('assets/road.jpg'),
+     radius: 20,
+   ),
+   title: Text("Mahad"),
+   subtitle: Text("Hey...!"),
+   trailing: Column(
+     mainAxisAlignment: MainAxisAlignment.spaceAround,
+     children: [
+       Text("4:25 PM"),
+       CircleAvatar(backgroundColor: Colors.green, radius: 10,)
+     ],),
+  );
 }
