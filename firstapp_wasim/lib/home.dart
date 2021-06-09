@@ -36,7 +36,7 @@ Widget abc() {
    trailing: Column(
      mainAxisAlignment: MainAxisAlignment.spaceAround,
      children: [
-       Text("6:25 PM"),
+       Text("9:00 PM"),
        CircleAvatar(backgroundColor: Colors.green, radius: 10,)
      ],),
   );
