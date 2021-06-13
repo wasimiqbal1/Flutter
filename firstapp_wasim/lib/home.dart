@@ -18,7 +18,6 @@ class _HomeState extends State<Home> {
           abc(),
           abc(),
           abc(),
-          abc(),
         ]    
       )      
     );
@@ -31,7 +30,7 @@ Widget abc() {
      backgroundImage: AssetImage('assets/road.jpg'),
      radius: 20,
    ),
-   title: Text("Mahad"),
+   title: Text("Aiza"),
    subtitle: Text("Hey...!"),
    trailing: Column(
      mainAxisAlignment: MainAxisAlignment.spaceAround,
