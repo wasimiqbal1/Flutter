@@ -86,7 +86,7 @@ class _State extends State<MyApp> {
                       TextButton(
                         child: Text(
                           ' Create Account',
-                          style: TextStyle(fontSize: 15),
+                          style: TextStyle(fontSize: 14),
                         ),
                         onPressed: () {
                           //signup screen

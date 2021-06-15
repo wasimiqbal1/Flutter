@@ -17,7 +17,6 @@ class _HomeState extends State<Home> {
           abc(),
           abc(),
           abc(),
-          abc(),
         ]    
       )      
     );
