@@ -11,7 +11,15 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: ListView(
         children: [
-          Container(color: Colors.yellow, height: 100,)
+          Container( 
+          color: Colors.yellow,
+          height: 100,
+          child: Row(
+            children: [
+              Container(color: Colors.blue,height: 95, width: 90,)
+            ],
+          ),
+          )
         ]    
       )      
     );
