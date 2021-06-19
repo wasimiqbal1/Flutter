@@ -29,6 +29,7 @@ class _HomeState extends State<Home> {
                         Text("ABC"),
                       ],
                     ),
+                    Icon(Icons.add),
                     Text("ABC"),
                   ],
                 ),
