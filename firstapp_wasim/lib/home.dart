@@ -16,7 +16,23 @@ class _HomeState extends State<Home> {
           height: 100,
           child: Row(
             children: [
-              Container(color: Colors.blue,height: 95, width: 90,)
+              Container(color: Colors.blue,height: 95, width: 90,),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("ABC"),
+                    Row(
+                      children: [
+                        Text("ABC"),
+                        Text("ABC"),
+                      ],
+                    ),
+                    Text("ABC"),
+                  ],
+                ),
+              )
             ],
           ),
           )
