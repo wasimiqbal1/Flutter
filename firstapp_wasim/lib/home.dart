@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'app.dart';
-
 
 class Home extends StatefulWidget {
   @override
@@ -13,6 +11,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: ListView(
         children: [
+          Container(color: Colors.yellow, height: 100,)
         ]    
       )      
     );
