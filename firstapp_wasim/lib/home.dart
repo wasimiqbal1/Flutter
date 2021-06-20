@@ -6,17 +6,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-var text = "";
+var text = 0;
 
 one (){
   setState(() {
-    text = "1";
+    text += 1 ;
   });
 }
 
 two (){
   setState(() {
-    text = "2";
+    text -= 1 ;
   });
 }
 
@@ -29,9 +29,9 @@ two (){
           children: [
             Text("Text: $text"),
             SizedBox(height: 20,),
-            ElevatedButton(onPressed: one, child: Text("Make 1")),
+            ElevatedButton(onPressed: one, child: Text("Increment")),
             SizedBox(height: 20,),
-            ElevatedButton(onPressed: two, child: Text("Make 2")),
+            ElevatedButton(onPressed: two, child: Text("Decrement")),
             
           ],
 
