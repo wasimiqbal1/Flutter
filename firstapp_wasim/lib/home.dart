@@ -15,12 +15,14 @@ class _HomeState extends State<Home> {
         crossAxisSpacing: 50,
         mainAxisSpacing: 50,
         children: List.generate(list.length, (index) {
-            return Container(
-              color: Colors.cyan,
-              child: Center(child: Text(list[index])),
+            return Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                color: Colors.cyan,
+                child: Center(child: Text(list[index])),
+              ),
             );
         })
-       
     ));
 }
 }
