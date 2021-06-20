@@ -4,37 +4,19 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
+var list = ["Ahmed","Hashir","Abdul Kabir"];
 
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          abc("Wasim"),
-          abc("Abdul Kabir")
-        ]    
-      )      
+      body: ListView.builder(
+        itemCount: list.length,
+        itemBuilder: (context,index){
+          return ListTile(
+            title: Text(list[index]),
+            );
+          })
     );
-  }
 }
-
-Widget abc(var name) {
-          return Container( 
-          color: Colors.yellow,
-          height: 100,
-          child: Row(
-            children: [
-              Container(color: Colors.blue,height: 95, width: 90,),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(name),
-              ],),
-              )
-            ],
-          ),
-          );
 }
