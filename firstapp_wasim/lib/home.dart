@@ -1,5 +1,3 @@
-import 'package:firstapp_wasim/login.dart';
-import 'package:firstapp_wasim/register.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -8,29 +6,36 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+var text = "";
+
+one (){
+  setState(() {
+    text = "1";
+  });
+}
+
+two (){
+  setState(() {
+    text = "2";
+  });
+}
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text("Company Name")),
-          bottom : TabBar (
-            unselectedLabelColor: Colors.grey,
-            labelColor: Colors.red,
-            indicatorColor: Colors.red,
-            tabs: [
-            Tab(child: Text("Login"),),
-            Tab(child: Text("Register"),)
-          ],)
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Text: $text"),
+            SizedBox(height: 20,),
+            ElevatedButton(onPressed: one, child: Text("Make 1")),
+            SizedBox(height: 20,),
+            ElevatedButton(onPressed: two, child: Text("Make 2")),
+            
+          ],
+
         ),
-        body: TabBarView(children: [
-          Login(),
-          Register()
-        ],)
-
-      ),
-
-    );
+      ));
 }
 }
