@@ -5,6 +5,7 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 var list = ["Ahmed","Hashir","Abdul Kabir"];
+var age = ["16","14","7"];
 
 class _HomeState extends State<Home> {
   @override
@@ -15,6 +16,7 @@ class _HomeState extends State<Home> {
         itemBuilder: (context,index){
           return ListTile(
             title: Text(list[index]),
+            subtitle: Text(age[index]),
             );
           })
     );
