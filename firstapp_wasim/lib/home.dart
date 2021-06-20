@@ -11,7 +11,16 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: ListView(
         children: [
-          Container( 
+          abc("Wasim"),
+          abc("Abdul Kabir")
+        ]    
+      )      
+    );
+  }
+}
+
+Widget abc(var name) {
+          return Container( 
           color: Colors.yellow,
           height: 100,
           child: Row(
@@ -22,40 +31,10 @@ class _HomeState extends State<Home> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("ABC"),
-                    Row(
-                      children: [
-                        Text("ABC"),
-                        Text("ABC"),
-                      ],
-                    ),
-                    Icon(Icons.add),
-                    Text("ABC"),
-                  ],
-                ),
+                    Text(name),
+              ],),
               )
             ],
           ),
-          )
-        ]    
-      )      
-    );
-  }
-}
-
-Widget abc() {
-  return ListTile(
-    leading: CircleAvatar(
-     backgroundImage: AssetImage('assets/road.jpg'),
-     radius: 20,
-   ),
-   title: Text("Aiza"),
-   subtitle: Text("Hey...!"),
-   trailing: Column(
-     mainAxisAlignment: MainAxisAlignment.spaceAround,
-     children: [
-       Text("9:00 PM"),
-       CircleAvatar(backgroundColor: Colors.green, radius: 10,)
-     ],),
-  );
+          );
 }
