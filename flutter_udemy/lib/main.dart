@@ -13,11 +13,17 @@ class MyApp extends StatefulWidget {
 
 class _State extends State<MyApp> {
 
-  String _value = "Hello World";
+  int _value= 0;
 
-  void _onPressed(){
-    setState(() {
-      _value = new DateTime.now().toString() ;
+  void _add() {
+    setState((){
+      _value++;
+    });
+  }
+
+  void _subtract() {
+    setState((){
+      _value--;
     });
   }
 
@@ -25,16 +31,20 @@ class _State extends State<MyApp> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Flutter App'),
+        title: new Text('Name here'),
       ),
       body: new Container(
         padding: new EdgeInsets.all(32.0),
-        child: new Column(
-          children: <Widget>[
-            new Text(_value),
-             new FlatButton(onPressed: _onPressed, child: new Text("Click me"))
-          ],
-        ),
+        child: new Center(
+          child: new Column(
+            children: <Widget>[
+              new Text('Value = ${_value}'),
+              new IconButton(icon: new Icon(Icons.add), onPressed: _add),
+              new IconButton(icon: new Icon(Icons.remove), onPressed: _subtract)
+
+            ],
+          ),
+        )
       ),
     );
   }
