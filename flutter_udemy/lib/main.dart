@@ -15,9 +15,9 @@ class _State extends State<MyApp> {
 
   String _value = "Hello World";
 
-  void _onPressed(){
+  void _onPressed(String value){
     setState(() {
-      _value = "My name is Wasim";
+      _value = value;
     });
   }
 
@@ -32,7 +32,7 @@ class _State extends State<MyApp> {
         child: new Column(
           children: <Widget>[
             new Text(_value),
-            new ElevatedButton (onPressed: _onPressed, child: new Text("Click me"),)
+            new ElevatedButton(onPressed: () => _onPressed("Hello Wasim"), child: new Text("Click here"))
           ],
         ),
       ),
