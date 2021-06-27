@@ -12,41 +12,38 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
-
-  String _value = '';
-
-  void _onClick() {
-    setState((){
-      _value = new DateTime.now().toString();
-    });
-    Navigator.pop(context);
+  
+  void _showBottom() {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return new Container(
+          padding: new EdgeInsets.all(15.0),
+          child: new Row(
+            mainAxisAlignment:  MainAxisAlignment.center,
+            children: <Widget>[
+              new Text('Some info here', style: new TextStyle(color: Colors.red, fontWeight: FontWeight.bold),),
+              new ElevatedButton(onPressed: () => Navigator.pop(context), child: new Text('Close'),)
+            ],
+          ),
+        );  
+      }
+    );
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Flutter Drawer App'),
+        title: new Text('Name here'),
       ),
-      
-      drawer: new Drawer(
-        child: new Container(
-          padding: new EdgeInsets.all(32.0),
-          child: new Column(
-            children: <Widget>[
-              new Text('Hello Drawer'),
-              new ElevatedButton(onPressed: _onClick, child: new Text('Close Drawer'),)
-            ],
-          ),
-        ),
-      ),
-      
       body: new Container(
         padding: new EdgeInsets.all(32.0),
         child: new Center(
           child: new Column(
             children: <Widget>[
-              new Text(_value)
+              new Text('Add Widgets Here'),
+              new ElevatedButton(onPressed: _showBottom, child: new Text('Click me'),)
             ],
           ),
         )
