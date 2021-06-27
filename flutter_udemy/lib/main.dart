@@ -16,8 +16,10 @@ class _State extends State<MyApp> {
   bool _value1 = false;
   bool _value2 = false;
 
-  void _value1Changed(bool value) => setState(() => _value1 = value);
-  void _value2Changed(bool value) => setState(() => _value2 = value);
+  //void _onChanged1(bool value) => setState(() => _value1 = value);
+  //void _onChanged2(bool value) => setState(() => _value2 = value);
+  void _onChanged1(bool? value) => setState(()=>_value1 = value!);
+  void _onChanged2(bool? value) => setState(()=>_value2 = value!);
 
   @override
   Widget build(BuildContext context) {
@@ -26,23 +28,25 @@ class _State extends State<MyApp> {
         title: new Text('Name here'),
       ),
       body: new Container(
-        padding: new EdgeInsets.all(32.0),
-        child: new Center(
-          child: new Column(
-            children: <Widget>[
-              new Checkbox(value: _value1, onChanged: _value1Changed),
-              new CheckboxListTile(
+          padding: new EdgeInsets.all(32.0),
+          child: new Center(
+            child: new Column(
+              children: <Widget>[
+              new Switch(value: _value1, onChanged: _onChanged1),
+              new SwitchListTile(
                   value: _value2,
-                  onChanged: _value2Changed,
-                  title: new Text('Hello World'),
-                  controlAffinity: ListTileControlAffinity.leading,
-                  subtitle: new Text('Subtitle'),
-                secondary: new Icon(Icons.archive),
-                activeColor: Colors.red,
-              )
-            ],
-          ),
-        )
+                  onChanged: _onChanged2,
+                  title: new Text(
+                    'Hello World',
+                    style: new TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red
+                  ),),
+                  )
+
+              ],
+            ),
+          )
       ),
     );
   }
