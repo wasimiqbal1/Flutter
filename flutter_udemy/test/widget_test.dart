@@ -1,55 +1,30 @@
+// This is a basic Flutter widget test.
+// To perform an interaction with a widget in your test, use the WidgetTester utility that Flutter
+// provides. For example, you can send tap and scroll gestures. You can also use WidgetTester to
+// find child widgets in the widget tree, read text, and verify that the values of widget properties
+// are correct.
+
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_udemy/main.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Alert',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyView(),
-    );
-  }
-}
 
-class MyView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter AlertDialog - googleflutter.com'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Alert Dialog'),
-          onPressed: () {
-            _showDialog(context);
-          },
-        ),
-      ),
-    );
-  }
-}
+void main() {
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(new MyApp());
 
-void _showDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: new Text("Alert!!"),
-        content: new Text("You are awesome!"),
-        actions: <Widget>[
-          new ElevatedButton(
-            child: new Text("OK"),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-    },
-  );
+    // Verify that our counter starts at 0.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
+
+    // Tap the '+' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
+
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
+  });
 }
