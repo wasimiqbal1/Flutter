@@ -1,52 +1,43 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(new MaterialApp(
-    home: new MyApp(),
-  ));
-}
+void main() => runApp(SnackBarDemo());
 
-class MyApp extends StatefulWidget {
-  @override
-  _State createState() => new _State();
-}
-
-class _State extends State<MyApp> {
-  
-  void _showBottom() {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return new Container(
-          padding: new EdgeInsets.all(15.0),
-          child: new Row(
-            mainAxisAlignment:  MainAxisAlignment.center,
-            children: <Widget>[
-              new Text('Some info here', style: new TextStyle(color: Colors.red, fontWeight: FontWeight.bold),),
-              new ElevatedButton(onPressed: () => Navigator.pop(context), child: new Text('Close'),)
-            ],
-          ),
-        );  
-      }
-    );
-  }
-  
+class SnackBarDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Name here'),
+    return MaterialApp(
+      title: 'SnackBar Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('SnackBar Demo'),
+        ),
+        body: SnackBarPage(),
       ),
-      body: new Container(
-        padding: new EdgeInsets.all(32.0),
-        child: new Center(
-          child: new Column(
-            children: <Widget>[
-              new Text('Add Widgets Here'),
-              new ElevatedButton(onPressed: _showBottom, child: new Text('Click me'),)
-            ],
-          ),
-        )
+    );
+  }
+}
+
+class SnackBarPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        onPressed: () {
+          final snackBar = SnackBar(
+            content: Text('Yay! A SnackBar!'),
+            action: SnackBarAction(
+              label: 'Undo',
+              onPressed: () {
+                // Some code to undo the change.
+              },
+            ),
+          );
+
+          // Find the ScaffoldMessenger in the widget tree
+          // and use it to show a SnackBar.
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        },
+        child: Text('Show SnackBar'),
       ),
     );
   }
