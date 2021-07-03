@@ -16,44 +16,16 @@ class _State extends State<MyApp> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Flutter Card'),
+        title: new Text('Name here'),
       ),
       body: new Container(
         padding: new EdgeInsets.all(32.0),
         child: new Center(
           child: new Column(
             children: <Widget>[
-              new Card(
-                child: new Container(
-                  padding: new EdgeInsets.all(32.0),
-                  child: new Column(
-                    children: <Widget>[
-                      new Text('Zunairah')
-                    ],
-                  ),
-                ),
-              ),
+              new Text('Image Demo'),
+              new Expanded(child: new Image.network('http://voidrealms.com/images/smile.jpg')),
 
-              new Card(
-                child: new Container(
-                  padding: new EdgeInsets.all(32.0),
-                  child: new Column(
-                    children: <Widget>[
-                      new Text('Abdul Kabir')
-                    ],
-                  ),
-                ),
-              ),
-              new Card(
-                child: new Container(
-                  padding: new EdgeInsets.all(32.0),
-                  child: new Column(
-                    children: <Widget>[
-                      new Text('Aiza')
-                    ],
-                  ),
-                ),
-              )
             ],
           ),
         )
