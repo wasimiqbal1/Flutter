@@ -28,8 +28,7 @@ class _State extends State<MyApp> {
                   padding: new EdgeInsets.all(32.0),
                   child: new Column(
                     children: <Widget>[
-                      new Text('Hello World!'),
-                      new Text('How are you?')
+                      new Text('Zunairah')
                     ],
                   ),
                 ),
@@ -40,8 +39,7 @@ class _State extends State<MyApp> {
                   padding: new EdgeInsets.all(32.0),
                   child: new Column(
                     children: <Widget>[
-                      new Text('Hello World!'),
-                      new Text('How are you?')
+                      new Text('Abdul Kabir')
                     ],
                   ),
                 ),
@@ -51,8 +49,7 @@ class _State extends State<MyApp> {
                   padding: new EdgeInsets.all(32.0),
                   child: new Column(
                     children: <Widget>[
-                      new Text('Hello World!'),
-                      new Text('How are you?')
+                      new Text('Aiza')
                     ],
                   ),
                 ),
