@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 void main() {
   runApp(new MaterialApp(
@@ -12,70 +11,43 @@ class MyApp extends StatefulWidget {
   _State createState() => new _State();
 }
 
-enum Answers{YES,NO,MAYBE}
-
 class _State extends State<MyApp> {
 
-  String _value = '';
-
-  void _setValue(String value) => setState(() => _value = value);
-
-  Future _askUser() async {
-    switch(
-    await showDialog(
-         context: context,
-       /*
-       Older Flutter Versions
-        child: new SimpleDialog(
-          title: new Text('Do you like Flutter?'),
-          children: <Widget>[
-            new SimpleDialogOption(child: new Text('Yes!!!'),onPressed: (){Navigator.pop(context, Answers.YES);},),
-            new SimpleDialogOption(child: new Text('NO :('),onPressed: (){Navigator.pop(context, Answers.NO);},),
-            new SimpleDialogOption(child: new Text('Maybe :|'),onPressed: (){Navigator.pop(context, Answers.MAYBE);},),
-          ],
-        )
-        */
-       builder: (BuildContext context) {
-         return new SimpleDialog(
-           title: new Text('Do you like Flutter?'),
-           children: <Widget>[
-             new SimpleDialogOption(child: new Text('Yes!!!'),onPressed: (){Navigator.pop(context, Answers.YES);},),
-             new SimpleDialogOption(child: new Text('NO :('),onPressed: (){Navigator.pop(context, Answers.NO);},),
-             new SimpleDialogOption(child: new Text('Maybe :|'),onPressed: (){Navigator.pop(context, Answers.MAYBE);},),
-           ],
-         );
-          }
-    )
-    ) {
-      case Answers.YES:
-        _setValue('Yes');
-        break;
-      case Answers.NO:
-        _setValue('No');
-        break;
-      case Answers.MAYBE:
-        _setValue('Maybe');
-        break;
-    }
-  }
-
+  TextEditingController _user = new TextEditingController();
+  TextEditingController _pass = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Flutter Simple Dialog'),
+        title: new Text('Flutter Login'),
       ),
       body: new Container(
-          padding: new EdgeInsets.all(32.0),
-          child: new Center(
-            child: new Column(
-              children: <Widget>[
-                new Text(_value),
-                new ElevatedButton(onPressed: _askUser, child: new Text('Click me'),)
-              ],
-            ),
-          )
+        padding: new EdgeInsets.all(32.0),
+        child: new Center(
+          child: new Column(
+            children: <Widget>[
+              new Text('Please Login'),
+              new Row(
+                children: <Widget>[
+                  new Text('Username: '),
+                  new Expanded(child: new TextField(controller: _user,))
+                ],
+              ),
+              new Row(
+                children: <Widget>[
+                  new Text('Password: '),
+                  new Expanded(child: new TextField(controller: _pass,obscureText: true,))
+                ],
+              ),
+
+              new Padding(
+                padding: new EdgeInsets.all(32.0),
+                child: new ElevatedButton(onPressed: () => print('Login ${_user.text}'), child: new Text('Click me'),),
+              )
+            ],
+          ),
+        )
       ),
     );
   }
