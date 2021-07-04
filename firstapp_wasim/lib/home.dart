@@ -20,6 +20,12 @@ two (){
   });
 }
 
+zero (){
+  setState(() {
+    text = 0 ;
+  });
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,11 +33,13 @@ two (){
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Text: $text"),
-            SizedBox(height: 20,),
+            Text("Count: $text"),
+            SizedBox(height: 15,),
             ElevatedButton(onPressed: one, child: Text("Increment")),
-            SizedBox(height: 20,),
+            SizedBox(height: 15,),
             ElevatedButton(onPressed: two, child: Text("Decrement")),
+            SizedBox(height: 15,),
+            ElevatedButton(onPressed: zero, child: Text("Reset")),
             
           ],
 
