@@ -14,7 +14,7 @@ class _HomeState extends State<Home> {
               child: Column(
           children: [
             ListView(
-              physics: NeverScrollableScrollPhysics(),  
+              physics: NeverScrollableScrollPhysics(),    
               shrinkWrap: true,
               children: [
                 Container(
