@@ -37,11 +37,6 @@ class _HomeState extends State<Home> {
                   color: Colors.amber,
                   height: 200, 
                   ),
-                Container(
-                  margin: EdgeInsets.only(top:10,),
-                  color: Colors.amber,
-                  height: 200, 
-                  ),
               ]
             )
           ]
