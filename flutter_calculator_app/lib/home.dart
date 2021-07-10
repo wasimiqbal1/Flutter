@@ -24,12 +24,12 @@ class _HomeState extends State<Home> {
                   ),
                 Container(
                   margin: EdgeInsets.only(top:10,),
-                  color: Colors.amber,
+                  color: Colors.blue,
                   height: 200, 
                   ),
                 Container(
                   margin: EdgeInsets.only(top:10,),
-                  color: Colors.amber,
+                  color: Colors.pink,
                   height: 200, 
                   ),
               ]
