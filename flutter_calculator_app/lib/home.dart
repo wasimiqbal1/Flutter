@@ -1,68 +1,57 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  
+class Calculator extends StatefulWidget {
+ 
+
   @override
-  _HomeState createState() => _HomeState();
+  _CalculatorState createState() => _CalculatorState();
 }
 
-class _HomeState extends State<Home> {
-
-  List<dynamic> lst = [1,2,3,4,5,6,7,8];
+class _CalculatorState extends State<Calculator> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-              child: Column(
+    Widget build(BuildContext context) {
+      return Scaffold(
+        body: Column(
           children: [
-            Container( 
-              height: 200,
-              width: 200,
-              color: Colors.amber,
-              margin: EdgeInsets.only(top: 10),
-            ),
-            Container( 
-              height: 200,
-              width: 200,
-              color: Colors.amber,
-              margin: EdgeInsets.only(top: 10),
-            ),
-            Container( 
-              height: 200,
-              width: 200,
-              color: Colors.amber,
-              margin: EdgeInsets.only(top: 10),
-            ),
-            Container( 
-              height: 200,
-              width: 200,
-              color: Colors.amber,
-              margin: EdgeInsets.only(top: 10),
-            ),
-            Container( 
-              height: 200,
-              width: 200,
-              color: Colors.amber,
-              margin: EdgeInsets.only(top: 10),
-            ),
- 
-            GridView.count(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              crossAxisCount: 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-              children: List.generate(lst.length, (index)  {
-                return Container(
-                  color: Colors.red,
-                  child: Center(child: Text("${lst[index]}"),
-                ));
-            }),
-            )
-
-         ]
-        ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+              btn("1"),
+              btn("2"),
+              btn("3"),
+              btn("4")
+          ],),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+              btn("5"),
+              btn("6"),
+              btn("7"),
+              btn("8")
+          ],),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+              btn("9"),
+              btn("0"),
+              btn("+"),
+              btn("-")
+          ],),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+              btn("*"),
+              btn("/"),
+              btn("clear"),
+              btn("=")
+          ],),
+          
+        ]
       ),
     );
   }
+}
+
+Widget btn (var textt){
+  return ElevatedButton(onPressed: (){}, child: Text(textt));
 }
