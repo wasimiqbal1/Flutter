@@ -44,38 +44,38 @@ output(){
       return Scaffold(
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text(result,style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
+              Text(result,style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold),),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                btn("+"),
+                btn("-"),
+                btn("*"),
+                btn("/"),
+            ],),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                btn("7"),
+                btn("8"),
+                btn("9"),
+                btn("0")
+            ],),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                btn("3"),
+                btn("4"),
+                btn("5"),
+                btn("6")
+            ],),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                 btn("1"),
                 btn("2"),
-                btn("3"),
-                btn("4")
-            ],),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                btn("5"),
-                btn("6"),
-                btn("7"),
-                btn("8")
-            ],),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                btn("9"),
-                btn("0"),
-                btn("+"),
-                btn("-")
-            ],),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                btn("*"),
-                btn("/"),
                 ElevatedButton(onPressed: clearr, child: Text("clear")),
                 ElevatedButton(onPressed: output, child: Text("=")),
             ],),
@@ -86,4 +86,3 @@ output(){
     );
   }
 }
-
