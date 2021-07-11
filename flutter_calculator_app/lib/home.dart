@@ -47,6 +47,7 @@ class _HomeState extends State<Home> {
             ),
  
             GridView.count(
+              physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               crossAxisCount: 2,
               crossAxisSpacing: 20,
