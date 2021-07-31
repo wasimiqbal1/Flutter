@@ -1,51 +1,89 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(new MaterialApp(
-    home: new MyApp(),
-  ));
+  runApp(
+    MyApp(
+      items: List<ListItem>.generate(
+        1000,
+        (i) => i % 6 == 0
+            ? HeadingItem('Heading $i')
+            : MessageItem('Sender $i', 'Message body $i'),
+      ),
+    ),
+  );
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _State createState() => new _State();
-}
+class MyApp extends StatelessWidget {
+  final List<ListItem> items;
 
-class _State extends State<MyApp> {
-
-  double _value = 0.0;
-
-  void _onChanged(double value) => setState(() => _value = value);
+  const MyApp({Key? key, required this.items}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Flutter Slider & Indicator'),
-      ),
-      body: new Container(
-        padding: new EdgeInsets.all(32.0),
-        child: new Center(
-          child: new Column(
-            children: <Widget>[
-              new Slider(value: _value, onChanged: _onChanged),
-              new Container(
-                padding: new EdgeInsets.all(32.0),
-                child:  new LinearProgressIndicator(
-                  value: _value,
-                  valueColor: new AlwaysStoppedAnimation<Color>(Colors.green),
-                ),
-              ),
-              new Container(
-                padding: new EdgeInsets.all(32.0),
-                child:  new CircularProgressIndicator(
-                  value: _value,
-                ),
-              )
-            ],
-          ),
-        )
+    const title = 'Mixed List';
+
+    return MaterialApp(
+      title: title,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(title),
+        ),
+        body: ListView.builder(
+          // Let the ListView know how many items it needs to build.
+          itemCount: items.length,
+          // Provide a builder function. This is where the magic happens.
+          // Convert each item into a widget based on the type of item it is.
+          itemBuilder: (context, index) {
+            final item = items[index];
+
+            return ListTile(
+              title: item.buildTitle(context),
+              subtitle: item.buildSubtitle(context),
+            );
+          },
+        ),
       ),
     );
   }
+}
+
+/// The base class for the different types of items the list can contain.
+abstract class ListItem {
+  /// The title line to show in a list item.
+  Widget buildTitle(BuildContext context);
+
+  /// The subtitle line, if any, to show in a list item.
+  Widget buildSubtitle(BuildContext context);
+}
+
+/// A ListItem that contains data to display a heading.
+class HeadingItem implements ListItem {
+  final String heading;
+
+  HeadingItem(this.heading);
+
+  @override
+  Widget buildTitle(BuildContext context) {
+    return Text(
+      heading,
+      style: Theme.of(context).textTheme.headline5,
+    );
+  }
+
+  @override
+  Widget buildSubtitle(BuildContext context) => const SizedBox.shrink();
+}
+
+/// A ListItem that contains data to display a message.
+class MessageItem implements ListItem {
+  final String sender;
+  final String body;
+
+  MessageItem(this.sender, this.body);
+
+  @override
+  Widget buildTitle(BuildContext context) => Text(sender);
+
+  @override
+  Widget buildSubtitle(BuildContext context) => Text(body);
 }
