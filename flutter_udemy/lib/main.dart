@@ -13,17 +13,20 @@ class MyApp extends StatefulWidget {
 
 class _State extends State<MyApp> {
 
-  late bool _visible;
+  late int _turns;
+  late double _value;
 
 
   @override
   void initState() {
-    _visible = true;
+    _turns = 0;
+    _value = 0.0;
   }
 
-  void _toggleVisible() {
+  void _onChanged(double value) {
     setState(() {
-      _visible = !_visible;
+      _value = value;
+      _turns = value.toInt();
     });
   }
 
@@ -31,19 +34,19 @@ class _State extends State<MyApp> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Name here'),
+        title: new Text('Flutter Rotated Box'),
       ),
       body: new Container(
         padding: new EdgeInsets.all(32.0),
-        child: Center(
+        child: new Center(
           child: new Column(
             children: <Widget>[
-              new Opacity(opacity: _visible ? 1.0 : 0.2,
-              child: new Text('Now you see me now you don\'t!')),
-              new ElevatedButton(onPressed: _toggleVisible, child: new Text('Toggle'),)
+              new Slider(value: _value, onChanged: _onChanged, min: 0.0, max: 4.0,),
+              new RotatedBox(quarterTurns: _turns,
+              child: new Text('Hello World'),)
             ],
           ),
-        ),
+        )
       ),
     );
   }
