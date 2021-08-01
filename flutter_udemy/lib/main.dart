@@ -12,25 +12,46 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
+
+  late double _x;
+  late double _y;
+  late double _z;
+
+
+  @override
+  void initState() {
+    _x = 0.0;
+    _y = 0.0;
+    _z = 0.0;
+  }
+  
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-               title: new Text('Flutter Box Decoration'),
+        title: new Text('Flutter Transformations'),
       ),
-body: new Container(
+      body: new Container(
         padding: new EdgeInsets.all(32.0),
         child: new Center(
           child: new Column(
             children: <Widget>[
-              new Text('Sun Shine'),
-              new Container(
-                child: new Image(image: new AssetImage('images/smile.png')),
-                padding: new EdgeInsets.all(32.0),
-                decoration: new BoxDecoration(
-                  border: new Border.all(color: Colors.orange, width: 2.0),
-                  gradient: new RadialGradient(colors: <Color>[Colors.red,Colors.yellow])
-                ),
+              new Row(children: <Widget>[
+                new Text('X'),
+                new Slider(value: _x, onChanged: (double value) => setState(() => _x = value))
+              ],),
+              new Row(children: <Widget>[
+                new Text('Y'),
+                new Slider(value: _y, onChanged: (double value) => setState(() => _y = value))
+              ],),
+              new Row(children: <Widget>[
+                new Text('Z'),
+                new Slider(value: _z, onChanged: (double value) => setState(() => _z = value))
+              ],),
+              new Transform(transform: new Matrix4.skewY(_y),
+                child: new Transform(transform: new Matrix4.skewX(_x),
+                child: new Transform(transform: new Matrix4.rotationZ(_z),
+                child: new Padding(padding: new EdgeInsets.all(10.0), child: new Text('hello World'),),),),
               )
             ],
           ),
