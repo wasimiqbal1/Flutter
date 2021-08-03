@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/animation.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -11,63 +12,47 @@ class MyApp extends StatefulWidget {
   _State createState() => new _State();
 }
 
-class _painter extends CustomPainter {
+class _State extends State<MyApp> with SingleTickerProviderStateMixin {
+
+  late Animation<double> animation;
+  late AnimationController controller;
+
 
   @override
-  void paint(Canvas canvas, Size size) {
-    //All our work will be done
+  void initState() {
+    super.initState();
 
-    final radius = 100.0;
-    final Offset offset = new Offset(0.0, 75.0);
-    final Paint paint = new Paint()
-      ..isAntiAlias = true
-      ..strokeWidth = 10.0
-      ..color = Colors.grey
-      ..style = PaintingStyle.stroke;
+    controller = new AnimationController( duration: const Duration(milliseconds: 5000),vsync: this);
+    animation = new Tween(begin: 0.0, end: 200.0).animate(controller);
+    animation.addListener(() {
+      setState(() {
+        //The state of the animation has changed
+      });
+    });
 
-    final Offset bodystart = new Offset(0.0, 50.0);
-    final Offset bodyend = new Offset(0.0, 0.0);
-
-    canvas.drawCircle(offset, radius, paint);
-    canvas.drawLine(bodystart, bodyend, paint);
-
-    final Rect rect = new Rect.fromCircle(center: offset, radius: radius);
-    final Rect smallrect = new Rect.fromCircle(center: offset, radius: 50.0);
-    final Paint rectpaint = new Paint()
-      ..isAntiAlias = true
-      ..strokeWidth = 10.0
-      ..color = Colors.orange
-      ..style = PaintingStyle.stroke;
-
-    canvas.drawRect(rect, rectpaint);
-    canvas.drawRect(smallrect, rectpaint);
+    controller.forward();
   }
+
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
-}
 
-class _State extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Name here'),
+        title: new Text('Flutter Animations'),
       ),
       body: new Container(
-          padding: new EdgeInsets.all(32.0),
-          child: new Center(
-            child: new Column(
-              children: <Widget>[
-
-
-                new Text('Hello', style: new TextStyle(fontSize: 30.0, fontWeight:  FontWeight.bold),),
-                new CustomPaint(painter: new _painter(),),
-              ],
-            ),
-          )
+        padding: new EdgeInsets.all(32.0),
+        height: animation.value,
+        width: animation.value,
+        child: new Center(
+          child: new FlutterLogo(size: 300.0,)
+        )
       ),
     );
   }
