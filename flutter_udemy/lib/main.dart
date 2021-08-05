@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/animation.dart';
+
 
 void main() {
   runApp(new MaterialApp(
@@ -11,6 +13,30 @@ class MyApp extends StatefulWidget {
   _State createState() => new _State();
 }
 
+class AnimatedLogo extends AnimatedWidget {
+
+  static final _opactityTween = new Tween<double>(begin: 0.1, end: 1.0);
+  static final _sizeTween = new Tween<double>(begin: 0.0, end: 300.0);
+  static final _rotateTween = new Tween<double>(begin: 0.0, end: 12.0);
+
+  AnimatedLogo({Key key, Animation<double> animation}) : super(key: key,listenable: animation);
+  
+  Widget build(BuildContext context) {
+    final Animation<double> animation = listenable;
+    
+    return new Center(
+      child: new Transform.rotate(angle: _rotateTween.evaluate(animation),
+      child: new Opacity(opacity: _opactityTween.evaluate(animation),
+      child: new Container(
+        margin: new EdgeInsets.symmetric(vertical: 10.0),
+        height: _sizeTween.evaluate(animation),
+        width: _sizeTween.evaluate(animation),
+        child: new FlutterLogo(),
+      ),),),
+    );
+  }
+}
+
 class _State extends State<MyApp> with TickerProviderStateMixin {
 
   late Animation animation;
@@ -20,13 +46,12 @@ class _State extends State<MyApp> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    controller = new AnimationController(duration: const Duration(milliseconds: 2000),vsync: this);
+    animation = new CurvedAnimation(parent: controller, curve: Curves.easeIn);
 
-    controller = new AnimationController(duration: const Duration(milliseconds: 5000),vsync: this);
-
-    final CurvedAnimation curve = new CurvedAnimation(parent: controller, curve: Curves.easeIn);
-    animation = new Tween(begin: 100.0, end: 300.0).animate(curve);
     animation.addStatusListener(listener);
     controller.forward();
+
   }
 
   void listener(AnimationStatus status) {
@@ -37,14 +62,6 @@ class _State extends State<MyApp> with TickerProviderStateMixin {
     }
   }
 
-  Widget builder(BuildContext context, Widget child) {
-    return new Container(
-      height: animation.value,
-      width: animation.value,
-      child: new FlutterLogo(),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -53,9 +70,7 @@ class _State extends State<MyApp> with TickerProviderStateMixin {
       ),
       body: new Container(
         padding: new EdgeInsets.all(32.0),
-        child: new Center(
-          child: new AnimatedBuilder(animation: animation, builder: builder),
-        )
+        child: new AnimatedLogo(animation: animation,)
       ),
     );
   }
